@@ -1,0 +1,9 @@
+$bj-green:          #4AAA0E;
+$bj-green-dark:     #006400;
+$bj-white:          #fff;
+$bj-black:          #000;
+$bj-orange:         #FFA500;
+
+$bj-font-family:    "Helvetica Neue", sans-serif;
+$bj-background:     radial-gradient(ellipse at center, $bj-green 0%, $bj-green-dark 100%);
+$bj-text-shadow:    0 1px 0 $bj-black, 0 2px 0 $bj-black, 0 3px 0 $bj-black, 0 4px 0 $bj-black, 0 5px 0 $bj-black, 0 6px 1px rgba($bj-black,.1), 0 0 5px rgba($bj-black,.1), 0 1px 3px rgba($bj-black,.3), 0 3px 5px rgba($bj-black,.2), 0 5px 10px rgba($bj-black,.25), 0 10px 10px rgba($bj-black,.2), 0 20px 20px rgba($bj-black,.15);

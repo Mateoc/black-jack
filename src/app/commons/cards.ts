@@ -1,0 +1,62 @@
+export default {
+  H: {
+    A: 'assets/images/cards/AH.svg',
+    2: 'assets/images/cards/2H.svg',
+    3: 'assets/images/cards/3H.svg',
+    4: 'assets/images/cards/4H.svg',
+    5: 'assets/images/cards/5H.svg',
+    6: 'assets/images/cards/6H.svg',
+    7: 'assets/images/cards/7H.svg',
+    8: 'assets/images/cards/8H.svg',
+    9: 'assets/images/cards/9H.svg',
+    10: 'assets/images/cards/10H.svg',
+    J: 'assets/images/cards/JH.svg',
+    Q: 'assets/images/cards/QH.svg',
+    K: 'assets/images/cards/KH.svg'
+  },
+  S: {
+    A: 'assets/images/cards/AS.svg',
+    2: 'assets/images/cards/2S.svg',
+    3: 'assets/images/cards/3S.svg',
+    4: 'assets/images/cards/4S.svg',
+    5: 'assets/images/cards/5S.svg',
+    6: 'assets/images/cards/6S.svg',
+    7: 'assets/images/cards/7S.svg',
+    8: 'assets/images/cards/8S.svg',
+    9: 'assets/images/cards/9S.svg',
+    10: 'assets/images/cards/10S.svg',
+    J: 'assets/images/cards/JS.svg',
+    Q: 'assets/images/cards/QS.svg',
+    K: 'assets/images/cards/KS.svg'
+  },
+  D: {
+    A: 'assets/images/cards/AD.svg',
+    2: 'assets/images/cards/2D.svg',
+    3: 'assets/images/cards/3D.svg',
+    4: 'assets/images/cards/4D.svg',
+    5: 'assets/images/cards/5D.svg',
+    6: 'assets/images/cards/6D.svg',
+    7: 'assets/images/cards/7D.svg',
+    8: 'assets/images/cards/8D.svg',
+    9: 'assets/images/cards/9D.svg',
+    10: 'assets/images/cards/10D.svg',
+    J: 'assets/images/cards/JD.svg',
+    Q: 'assets/images/cards/QD.svg',
+    K: 'assets/images/cards/KD.svg'
+  },
+  C: {
+    A: 'assets/images/cards/AC.svg',
+    2: 'assets/images/cards/2C.svg',
+    3: 'assets/images/cards/3C.svg',
+    4: 'assets/images/cards/4C.svg',
+    5: 'assets/images/cards/5C.svg',
+    6: 'assets/images/cards/6C.svg',
+    7: 'assets/images/cards/7C.svg',
+    8: 'assets/images/cards/8C.svg',
+    9: 'assets/images/cards/9C.svg',
+    10: 'assets/images/cards/10C.svg',
+    J: 'assets/images/cards/JC.svg',
+    Q: 'assets/images/cards/QC.svg',
+    K: 'assets/images/cards/KC.svg'
+  }
+};
