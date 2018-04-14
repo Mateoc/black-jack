@@ -21,6 +21,21 @@
             <td>Turn:</td>
             <td>{{player._turn == true ? 'Your Turn' : 'Turn in progress'}}</td>
           </tr>
+          <tr>
+            <td>Players:</td>
+            <td>
+              <table width="100%">
+                <tr *ngFor="let players of player_t">
+                  <td>
+                    Name: {{player_t.name}}
+                  </td>
+                  <td>
+                      State: {{player_t.state}}
+                    </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
         </table>
 
         <div *ngIf="player.cards as cards">
