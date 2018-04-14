@@ -16,6 +16,7 @@ export class GameComponent implements OnInit {
 
   playerObservable: Observable<Player>;
   gameStateObservable: Observable<string>;
+  betValue:number = 100;
 
   private codes = {
     CREATED: 'Waiting for bets',
@@ -35,15 +36,19 @@ export class GameComponent implements OnInit {
   }
 
   bet() {
-
+    this.gameStateService.getPlayerBet(this.betValue).subscribe(res=>console.log(res));
   }
 
   hit() {
-
+    this.gameStateService.getPlayerHit().subscribe(res=>console.log(res));
   }
 
   stand() {
+    this.gameStateService.setPlayerStand().subscribe(res=>console.log(res));
+  }
 
+  cards() {
+    this.gameStateService.getPlayerCards().subscribe(res=>console.log(res));
   }
 
 }

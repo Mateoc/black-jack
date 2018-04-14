@@ -95,4 +95,20 @@ export class GameStateService {
       }
     }
   }
+
+  getPlayerHit(){
+    return this.playerService.getHit();
+  }
+
+  getPlayerBet(betVal){
+    return this.playerService.sendBet(betVal);
+  }
+
+  setPlayerStand(){
+    return this.playerService.setStand();
+  }
+
+  getPlayerCards(){
+    return this.playerService.setCards();
+  }
 }
