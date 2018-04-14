@@ -1,15 +1,24 @@
-<section class="login-component">
-  <app-logo></app-logo>
-  <div class="content">
-    <header>
-      <h1>Login</h1>
-    </header>
-    <form (ngSubmit)="login()">
-      <input placeholder="Name" name="name" [(ngModel)]="credentials.name">
-      <input type="email" placeholder="E-mail" name="email" [(ngModel)]="credentials.email">
-      <div class="button-wrap"><button>Enter</button></div>
-    </form>
+<app-logo></app-logo>
+
+<div class="container-fluid">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1 class="panel-title">Login</h1>
+    </div>
+    
+    <div class="panel-body">
+      <form (ngSubmit)="login()">
+          <div>
+            <input placeholder="Name" name="name" [(ngModel)]="credentials.name">
+          </div>
+          <div>
+            <input type="email" placeholder="E-mail" name="email" [(ngModel)]="credentials.email">
+          </div>
+        <span>
+          <div><button class="btn btn-primary">Enter</button></div>
+        </span>
+      </form>
   </div>
-</section>
-
-
+  
+  <div class="panel-footer">Brian Cardona & Jorge Alirio Galvis - ng master Hackathon 2018</div>
+</div>
