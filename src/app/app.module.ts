@@ -12,7 +12,9 @@ import {LoginComponent} from './states/login/login.component';
 import { GameComponent } from './states/game/game.component';
 import { LogoComponent } from './commons/logo/logo.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-
+import {BetService} from './bet.service';
+import {HitService} from './hit.service';
+import {StandService} from './stand.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,7 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
     }),
     Angular2FontawesomeModule
   ],
-  providers: [],
+  providers: [BetService, HitService, StandService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

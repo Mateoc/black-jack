@@ -26,7 +26,7 @@ export class GameStateService {
     eventSource.addEventListener('gameState', (e) => {
       console.log('gameState', e);
       const game = JSON.parse(e.data);
-      if (this.getPlayerDto(this.sessionService.getCredentials().email, game.players)){
+      if (this.getPlayerDto(this.sessionService.getCredentials().email, game.players)) {
         this.eventObserver.next(game);
       } else {
         this.playerService.getPlayerState().subscribe((playerGame) => {
