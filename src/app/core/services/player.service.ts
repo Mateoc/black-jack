@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../environments/environment';
-import {SessionService} from './uthorization/session.service';
-import {Credentials} from '../model/credentials';
-import {Observable} from "rxjs/Observable";
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { SessionService } from './uthorization/session.service';
+import { Credentials } from '../model/credentials';
+import { Observable } from "rxjs/Observable";
 
 
 @Injectable()
@@ -16,12 +16,21 @@ export class PlayerService {
     this.credentials = sessionService.getCredentials();
   }
 
-  getPlayerState(): Observable<any>{
+  getPlayerState(): Observable<any> {
     return this.http.get(`${environment.api}/api/player/state`);
   }
 
-  getPlayer(){
+  getPlayer() {
     return this.http.get(`${environment.api}/api/player/`);
+  }
+
+  bet(token: string, bet: number) {
+    console.log(this.http.post(`${environment.api}/api/player/bet`, {
+      token: token,
+      bet: bet
+    }).subscribe((item)=>{
+      console.log(item);
+    })
   }
 
 }

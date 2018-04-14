@@ -1,11 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {GameStateService} from '../../core/services/game-state.service';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { GameStateService } from '../../core/services/game-state.service';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+//Services
+import { SessionService } from '../../core/services/uthorization/session.service';
 
-import {PlayerService} from '../../core/services/player.service';
+
+
+import { PlayerService } from '../../core/services/player.service';
 import Player from '../../core/model/player';
+
 
 @Component({
   selector: 'app-game',
@@ -24,7 +29,10 @@ export class GameComponent implements OnInit {
     DEALER_TURN: 'Dealer\'s turn'
   };
 
-  constructor(private gameStateService: GameStateService, private playerService: PlayerService) {
+  constructor(
+    private gameStateService: GameStateService,
+    private playerService: PlayerService,
+    private sessionService: SessionService) {
   }
 
   ngOnInit() {
@@ -34,7 +42,16 @@ export class GameComponent implements OnInit {
     });
   }
 
-  bet() {
+  bet(betText: any) {
+    let betValue: number = parseInt(betText == "" ? "0" : betText);
+    if (betValue == 0) {
+      betValue = 100;
+    }
+
+    console.log(betValue);
+    let token:string = this.sessionService.getSessionToken();
+
+    this.playerService.bet(token, betValue);
 
   }
 
