@@ -25,14 +25,14 @@ export class PlayerService {
   }
 
   bet(): Observable<any> {
-    return this.http.post(`${environment.api}/api/test/player/bet`, {bet: {}});
+    return this.http.post(`${environment.api}/api/player/bet`, {bet: {}});
   }
 
   hit(): Observable<any> {
-    return this.http.post(`${environment.api}/api/test/player/hit`, {});
+    return this.http.post(`${environment.api}/api/player/hit`, {});
   }
 
   stand(): Observable<any> {
-    return this.http.post(`${environment.api}/api/test/player/bet`, {})
+    return this.http.post(`${environment.api}/api/player/bet`, {})
   }
 }
