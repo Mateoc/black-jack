@@ -25,6 +25,8 @@ export class GameComponent implements OnInit {
   };
 
   myCards = [];
+  myBalance = 0;
+
 
   constructor(private gameStateService: GameStateService, private playerService: PlayerService) {
   }
@@ -38,17 +40,23 @@ export class GameComponent implements OnInit {
 
   bet() {
     console.log("apostando");
+    console.log(this.playerObservable);
     this.playerService.doBet().subscribe((gameState) => {
-      this.myCards = gameState.dealerCards.openCards;
-      console.log(gameState);
+      if (gameState.dealerCards.openCards.length > 0){
+        this.updateCards(gameState.dealerCards.openCards);
+        console.log(gameState);
+      }
     });
   }
 
   hit() {
     console.log("haciendo hit");
     this.playerService.doHit().subscribe((gameState) => {
-      this.myCards = gameState.dealerCards.openCards;
-      console.log(gameState);
+      if (gameState.dealerCards.openCards.length > 0){
+        this.updateCards(gameState.dealerCards.openCards);
+        this.updateBalance(gameState.currentPlayer.balance)
+        console.log(gameState);
+      }
     });
   }
 
@@ -57,6 +65,14 @@ export class GameComponent implements OnInit {
     this.playerService.doStand().subscribe((gameState) => {
       console.log(gameState);
     });
+  }
+
+  updateCards(newCards){
+    this.myCards = this.myCards.concat(newCards);
+  }
+
+  updateBalance(newBalance){
+    this.myBalance = newBalance;
   }
 
 }
