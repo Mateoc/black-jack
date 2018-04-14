@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {GameStateService} from '../../core/services/game-state.service';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { GameStateService } from '../../core/services/game-state.service';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-
-import {PlayerService} from '../../core/services/player.service';
+import { PlayerService } from '../../core/services/player.service';
 import Player from '../../core/model/player';
 
 @Component({
@@ -13,7 +12,6 @@ import Player from '../../core/model/player';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-
   playerObservable: Observable<Player>;
   gameStateObservable: Observable<string>;
 
@@ -21,29 +19,32 @@ export class GameComponent implements OnInit {
     CREATED: 'Waiting for bets',
     PLAYERS_TURN: 'Dealing players',
     FINISHED: 'Round Finished',
-    DEALER_TURN: 'Dealer\'s turn'
+    DEALER_TURN: "Dealer's turn"
   };
 
-  constructor(private gameStateService: GameStateService, private playerService: PlayerService) {
-  }
+  constructor(
+    private gameStateService: GameStateService,
+    private playerService: PlayerService
+  ) {}
 
   ngOnInit() {
     this.playerObservable = this.gameStateService.userObserver();
-    this.gameStateObservable = this.gameStateService.gameStateObserver().map(response => {
-      return this.codes[response] || response;
-    });
+    this.gameStateObservable = this.gameStateService
+      .gameStateObserver()
+      .map(response => {
+        return this.codes[response] || response;
+      });
   }
 
   bet() {
-
+    this.playerService.getBet().then(res => console.log(res));
   }
 
   hit() {
-
+    this.playerService.getHit().then(res => console.log(res));
   }
 
   stand() {
-
+    this.playerService.getStand().then(resp => console.log(resp));
   }
-
 }
