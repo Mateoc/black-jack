@@ -27,6 +27,8 @@ export class GameComponent implements OnInit {
     DEALER_TURN: 'Dealer\'s turn'
   };
 
+  betInput = 200
+
   constructor(
     private gameStateService: GameStateService,
     private playerService: PlayerService,
@@ -61,7 +63,7 @@ export class GameComponent implements OnInit {
   }
 
   doBet(){
-    return this.http.post(`${environment.api}/api/player/bet`, {value: 200});
+    return this.http.post(`${environment.api}/api/player/bet`, {value: this.betInput});
   }
 
   doHit(){

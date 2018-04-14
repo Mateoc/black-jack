@@ -5,6 +5,8 @@
       <h1>Let's Play!</h1>
     </header>
 
+    <input placeholder="Bet" name="bet" [(ngModel)]="betInput">
+
     <div *ngIf="playerObservable | async as player">
       <div *ngIf="gameStateObservable | async as state">State: {{state}}</div>
       {{player | json}}
