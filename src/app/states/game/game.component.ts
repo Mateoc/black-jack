@@ -32,18 +32,20 @@ export class GameComponent implements OnInit {
     this.gameStateObservable = this.gameStateService.gameStateObserver().map(response => {
       return this.codes[response] || response;
     });
+      this.bet();
+
   }
 
   bet() {
-
+    this.playerService.bet();
   }
 
   hit() {
-
+    this.playerService.hit();
   }
 
   stand() {
-
+      this.playerService.stand();
   }
 
 }

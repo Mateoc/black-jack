@@ -16,12 +16,22 @@ export class PlayerService {
     this.credentials = sessionService.getCredentials();
   }
 
-  getPlayerState(): Observable<any>{
+  getPlayerState(): Observable<any> {
     return this.http.get(`${environment.api}/api/player/state`);
   }
 
-  getPlayer(){
+  getPlayer() {
     return this.http.get(`${environment.api}/api/player/`);
+  }
+
+  bet () {
+    return this.http.post(`${environment.api}/api/player/bet`, {'value': 8000, 'token' : this.sessionService.getSessionToken()}).toPromise();
+  }
+  hit() {
+    return this.http.post(`${environment.api}/api/player/hit`, {'token' : this.sessionService.getSessionToken()}).toPromise();
+  }
+  stand () {
+    return this.http.post(`${environment.api}/api/player/stand`, {'token' : this.sessionService.getSessionToken()}).toPromise();
   }
 
 }
