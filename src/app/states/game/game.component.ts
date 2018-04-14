@@ -40,7 +40,7 @@ export class GameComponent implements OnInit {
 
   bet() {
     console.log("apostando");
-    console.log(this.playerObservable);
+    //console.log(this.gameStateObservable);
     this.playerService.doBet().subscribe((gameState) => {
       if (gameState.dealerCards.openCards.length > 0){
         this.updateCards(gameState.dealerCards.openCards);
@@ -50,7 +50,8 @@ export class GameComponent implements OnInit {
   }
 
   hit() {
-    console.log("haciendo hit");
+    // TODO ejecutar solo en mi turno
+    // TODO mostrar mensaje cuando perdi
     this.playerService.doHit().subscribe((gameState) => {
       if (gameState.dealerCards.openCards.length > 0){
         this.updateCards(gameState.dealerCards.openCards);
