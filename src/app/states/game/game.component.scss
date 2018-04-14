@@ -1,0 +1,19 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  background-color: #283593;
+  height: 100vh;
+}
+.header {
+  grid-row: 1 / span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile {
+  grid-row: 3 / span -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
