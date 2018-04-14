@@ -46,7 +46,7 @@ export class GameComponent implements OnInit {
   }
 
   bet() {
-    const bet = 1000;
+    const bet = 100;
     this.isbet = true;
     this.betService.saveBet(bet);
   }
