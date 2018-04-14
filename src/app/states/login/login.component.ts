@@ -18,9 +18,20 @@ export class LoginComponent {
     this.credentials = new Credentials();
   }
 
+  ngOnInit(){
+    if(localStorage.getItem('auth')){
+      //this.auth();
+    }
+  }
+
+  auth(){
+    this.stateService.go('game').catch(error => console.error(error));
+    localStorage.setItem('auth', "true");
+  }
+
   login() {
-    this.authenticationService.login(this.credentials).subscribe(() => {
-      this.stateService.go('game').catch(error => console.error(error));
+    this.authenticationService.login(this.credentials).subscribe((data) => {
+      this.auth();
     });
   }
 

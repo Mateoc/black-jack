@@ -1,21 +1,44 @@
 <section class="game-component">
   <app-logo></app-logo>
-  <div class="content">
-    <header>
-      <h1>Let's Play!</h1>
-    </header>
+  <div class="container">
+    
 
     <div *ngIf="playerObservable | async as player">
-      <div *ngIf="gameStateObservable | async as state">State: {{state}}</div>
-      {{player | json}}
+      
+      
+
+      <div  *ngIf="player._status == 'LOST'">
+        <h2>You lost</h2>
+      </div>
+    
+    <div  *ngIf="player._status != 'LOST'">
+        <div class="card orange darken-3">
+          <div class="card-content white-text">
+            <span class="card-title"><div *ngIf="gameStateObservable | async as state">State: {{state}}</div></span>
+            
+            <div>
+              <div><strong>Name: </strong>{{player._name}}</div>
+              <div><strong>Email: </strong>{{player._email}}</div>
+              <div><strong>Turn: </strong>{{player._turn ? 'Me' : 'Someone else turn'}}</div>
+              <div><strong>Balance: </strong>${{player._balance}}</div>
+              <div><strong>Default Bet: </strong>${{defaultBet}}</div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+      
       <div *ngIf="player.cards as cards">
         <img *ngFor="let card of cards" [src]="card" alt="">
       </div>
       <div class="actions">
-        <button type="button">Bet!</button>
-        <button type="button">Hit</button>
-        <button type="button">Stand</button>
+        <button type="button" class="btn orange darken-4" *ngIf="canBet" (click)="bet()">Bet!</button>
+        <button type="button" class="btn orange darken-4" *ngIf="player._turn" (click)="hit()">Hit</button>
+        <button type="button" class="btn orange darken-4" *ngIf="player._turn" (click)="stand()">Stand</button>
       </div>
+    </div>
     </div>
   </div>
 </section>

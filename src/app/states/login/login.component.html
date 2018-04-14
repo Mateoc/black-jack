@@ -1,15 +1,41 @@
-<section class="login-component">
-  <app-logo></app-logo>
-  <div class="content">
-    <header>
-      <h1>Login</h1>
-    </header>
-    <form (ngSubmit)="login()">
-      <input placeholder="Name" name="name" [(ngModel)]="credentials.name">
-      <input type="email" placeholder="E-mail" name="email" [(ngModel)]="credentials.email">
-      <div class="button-wrap"><button>Enter</button></div>
-    </form>
+
+
+
+
+
+<div class="container">
+    
+  <div class="valign-wrapper" style="min-height: 100vh">
+    <div class="box">
+        
+        <form (ngSubmit)="login()">
+        <img src="assets/images/logo/talos.png" class="logo">
+
+        <div class="info">
+          <h2>Acceso</h2>
+        </div>
+        <div class="form">
+            <div class="input-field">
+              
+              <input type="text"  id="name" name="name" class="validate" [(ngModel)]="credentials.name">
+              <label for="name">Nombre</label>
+            </div>
+
+
+              <div class="input-field" >
+                <input type="email" placeholder="E-mail" name="email" [(ngModel)]="credentials.email">
+                <label for="password">Correo</label>
+              </div>
+
+            </div>
+            
+
+            <div class="input-field">
+              <button type="submit" class="btn orange darken-4">Iniciar sesión </button>
+            </div>
+            </form>
+
+            <!--a [routerLink]="['/forgot', data['user']]" >Olvidó su contraseña?</a-->
+      </div>
+    </div>
   </div>
-</section>
-
-
