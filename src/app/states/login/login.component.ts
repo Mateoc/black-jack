@@ -16,6 +16,8 @@ export class LoginComponent {
   cards = cards;
   constructor(private authenticationService: AuthenticationService, private stateService: StateService) {
     this.credentials = new Credentials();
+    this.credentials.name = "Luis Felipe";
+    this.credentials.email = "luisfe_617@outlook.com";
   }
 
   login() {

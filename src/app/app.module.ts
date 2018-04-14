@@ -12,7 +12,7 @@ import {LoginComponent} from './states/login/login.component';
 import { GameComponent } from './states/game/game.component';
 import { LogoComponent } from './commons/logo/logo.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
     BrowserModule,
     FormsModule,
     CoreModule,
+    NgbModule.forRoot(),
     UIRouterModule.forRoot({
       states: STATES,
       useHash: false,

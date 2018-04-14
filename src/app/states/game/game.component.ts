@@ -1,21 +1,26 @@
-import {Component, OnInit} from '@angular/core';
-import {GameStateService} from '../../core/services/game-state.service';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { GameStateService } from '../../core/services/game-state.service';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
-import {PlayerService} from '../../core/services/player.service';
+import { PlayerService } from '../../core/services/player.service';
 import Player from '../../core/model/player';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
 
   playerObservable: Observable<Player>;
   gameStateObservable: Observable<string>;
+
+  betInfo$;
+  hitInfo$;
+  standInfo$;
 
   private codes = {
     CREATED: 'Waiting for bets',
@@ -34,16 +39,19 @@ export class GameComponent implements OnInit {
     });
   }
 
-  bet() {
+  ngOnDestroy() {
+  }
 
+  bet() {
+    this.playerService.bet().subscribe(response => { this.betInfo$ = response });
   }
 
   hit() {
-
+    this.playerService.hit().subscribe(response => { this.hitInfo$ = response });
   }
 
   stand() {
-
+    this.playerService.stand().subscribe(response => { this.standInfo$ = response });
   }
 
 }
