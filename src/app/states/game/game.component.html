@@ -12,7 +12,7 @@
         <img *ngFor="let card of cards" [src]="card" alt="">
       </div>
       <div class="actions">
-        <button type="button">Bet!</button>
+        <button type="button" (click)="bet()">Bet!</button>
         <button type="button">Hit</button>
         <button type="button">Stand</button>
       </div>

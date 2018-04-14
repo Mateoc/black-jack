@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {GameStateService} from '../../core/services/game-state.service';
+import {SessionService} from '../../core/services/uthorization/session.service';
+import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -24,7 +27,12 @@ export class GameComponent implements OnInit {
     DEALER_TURN: 'Dealer\'s turn'
   };
 
-  constructor(private gameStateService: GameStateService, private playerService: PlayerService) {
+  constructor(
+    private gameStateService: GameStateService,
+    private playerService: PlayerService,
+    private sessionService: SessionService,
+    private http: HttpClient
+  ) {
   }
 
   ngOnInit() {
@@ -35,7 +43,9 @@ export class GameComponent implements OnInit {
   }
 
   bet() {
-
+    this.doBet().subscribe(res => {
+      console.log(res)
+    })
   }
 
   hit() {
@@ -46,4 +56,7 @@ export class GameComponent implements OnInit {
 
   }
 
+  doBet(){
+    return this.http.post(`${environment.api}/api/player/bet`, {value: 200});
+  }
 }
