@@ -7,10 +7,26 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
 
-          <table>
-            <thead></thead>
+          <table class="table" *ngIf="player && state">
             <tbody>
-
+              <tr>
+                <td>MyInfo</td>
+                <td>Name: {{player.name}} State: {{player.state}} Balance: {{player.balance}}</td>
+              </tr>
+              <tr>
+                <td>State: </td>
+                <td>{{codes[betInfo$?.state]}}</td>
+              </tr>
+              <tr>
+                <td>players: </td>
+                <td>
+                  <ul>
+                    <li *ngFor="let player of betInfo$?.players">
+                      Name: {{player.name}} Balance: {{player.balance}} State:{{player.state}}
+                    </li>
+                  </ul>
+                </td>
+              </tr>
             </tbody>
           </table>
 
