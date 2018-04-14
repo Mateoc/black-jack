@@ -24,4 +24,25 @@ export class PlayerService {
     return this.http.get(`${environment.api}/api/player/`);
   }
 
+
+
+
+  getCards(){
+    return this.http.get(`${environment.api}/api/player/cards`);
+  }
+
+  bet(data){
+    return this.http.post(`${environment.api}/api/player/bet`, data);
+  }
+
+
+  hit(data){
+    return this.http.post(`${environment.api}/api/player/hit`, data);
+  }
+
+
+  stand(data){
+    return this.http.post(`${environment.api}/api/player/stand`, data);
+  }
+
 }

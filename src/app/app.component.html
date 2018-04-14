@@ -1,2 +1,37 @@
-<ui-view></ui-view>
 
+
+<div id="loader" style="display: none">
+	<div class="loader valign-wrapper">
+		<div class="loader-page">
+		    
+			<div class="preloader-wrapper big active">
+			    <div class="spinner-layer spinner-blue-only">
+			      <div class="circle-clipper left">
+			        <div class="circle"></div>
+			      </div><div class="gap-patch">
+			        <div class="circle"></div>
+			      </div><div class="circle-clipper right">
+			        <div class="circle"></div>
+			      </div>
+			    </div>
+			  </div>
+
+		</div>
+	</div>
+</div>
+
+
+<app-menu *ngIf="user.auth"></app-menu>
+
+
+ <app-header *ngIf="user.auth"></app-header>
+
+ 
+<main class="{{user.auth ? 'dashboard' : ''}}">
+ 
+
+  <ui-view></ui-view>
+
+  <app-footer></app-footer>
+      
+</main>

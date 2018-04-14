@@ -28,9 +28,16 @@ export default class Player {
   constructor(private _name, private _email, private _balance, private _turn, private _bet?, cards?) {
     if (cards) {
       const openCards = cards.openCards;
+      const hiddenCards = cards.hiddenCards;
       openCards.forEach(card => {
         this._cards.push(cardsUris[suitToID[card.suit]][nameToID[card.name]]);
       });
+
+      hiddenCards.forEach(card => {
+        this._cards.push(cardsUris[suitToID[card.suit]][nameToID[card.name]]);
+      });
+
+      
     }
   }
 
