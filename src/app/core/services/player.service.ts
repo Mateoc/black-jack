@@ -24,4 +24,15 @@ export class PlayerService {
     return this.http.get(`${environment.api}/api/player/`);
   }
 
+  bet(): Observable<any> {
+    return this.http.post(`${environment.api}/api/test/player/bet`, {bet: {}});
+  }
+
+  hit(): Observable<any> {
+    return this.http.post(`${environment.api}/api/test/player/hit`, {});
+  }
+
+  stand(): Observable<any> {
+    return this.http.post(`${environment.api}/api/test/player/bet`, {})
+  }
 }

@@ -35,15 +35,15 @@ export class GameComponent implements OnInit {
   }
 
   bet() {
-
+    this.playerService.bet().subscribe(console.log);
   }
 
   hit() {
-
+    this.playerService.hit().subscribe(console.log);
   }
 
   stand() {
-
+    this.playerService.stand().subscribe(console.log);
   }
 
 }
