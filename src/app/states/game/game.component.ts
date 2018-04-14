@@ -55,7 +55,9 @@ export class GameComponent implements OnInit {
   }
 
   stand() {
-
+    this.doStand().subscribe(res => {
+      console.log(res)
+    })
   }
 
   doBet(){
@@ -64,5 +66,9 @@ export class GameComponent implements OnInit {
 
   doHit(){
     return this.http.post(`${environment.api}/api/player/hit`, {});
+  }
+
+  doStand(){
+    return this.http.post(`${environment.api}/api/player/stand`, {});
   }
 }
