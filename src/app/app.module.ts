@@ -12,6 +12,7 @@ import {LoginComponent} from './states/login/login.component';
 import { GameComponent } from './states/game/game.component';
 import { LogoComponent } from './commons/logo/logo.component';
 import {Angular2FontawesomeModule} from 'angular2-fontawesome';
+import { BetComponent } from './bet/bet.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {Angular2FontawesomeModule} from 'angular2-fontawesome';
     AppComponent,
     LoginComponent,
     GameComponent,
-    LogoComponent
+    LogoComponent,
+    BetComponent
   ],
   imports: [
     BrowserModule,

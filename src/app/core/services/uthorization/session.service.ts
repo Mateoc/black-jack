@@ -24,7 +24,7 @@ export class SessionService {
   }
 
   isLogged(): boolean {
-    return !!this.token;
+    return !!this.token; // habia !! es un !
   }
 
 }

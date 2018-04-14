@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {GameStateService} from '../../core/services/game-state.service';
+import {BetService} from '../../bet.service';
+import {HitService} from '../../hit.service';
+import {StandService} from '../../stand.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -14,6 +17,9 @@ import Player from '../../core/model/player';
 })
 export class GameComponent implements OnInit {
 
+  public isbet = false;
+  public ishit = false;
+  public isstand = false;
   playerObservable: Observable<Player>;
   gameStateObservable: Observable<string>;
 
@@ -24,7 +30,12 @@ export class GameComponent implements OnInit {
     DEALER_TURN: 'Dealer\'s turn'
   };
 
-  constructor(private gameStateService: GameStateService, private playerService: PlayerService) {
+  constructor(private gameStateService: GameStateService,
+    private playerService: PlayerService,
+    private betService: BetService,
+    private hitService: HitService,
+    private standService: StandService
+    ) {
   }
 
   ngOnInit() {
@@ -35,15 +46,19 @@ export class GameComponent implements OnInit {
   }
 
   bet() {
-
+    const bet = 1000;
+    this.isbet = true;
+    this.betService.saveBet(bet);
   }
 
   hit() {
-
+    this.ishit = true;
+    this.hitService.saveHit();
   }
 
   stand() {
-
+    this.isstand = true;
+    this.standService.saveStand();
   }
 
 }
