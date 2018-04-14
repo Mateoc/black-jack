@@ -11,9 +11,11 @@ import {Observable} from "rxjs/Observable";
 export class PlayerService {
 
   credentials: Credentials;
+  token: any;
 
   constructor(private http: HttpClient, private sessionService: SessionService) {
     this.credentials = sessionService.getCredentials();
+    this.token       = sessionService.getSessionToken();
   }
 
   getPlayerState(): Observable<any>{
@@ -22,6 +24,19 @@ export class PlayerService {
 
   getPlayer(){
     return this.http.get(`${environment.api}/api/player/`);
+  }
+
+  doBet(): Observable<any>{
+    let params = {token: this.token, bet: { value: 0 }};
+    return this.http.post(`${environment.api}/api/test/player/bet`, params)
+  }
+
+  doHit(): Observable<any>{
+    return this.http.post(`${environment.api}/api/test/player/hit`, { token: this.token })
+  }
+
+  doStand(): Observable<any>{
+    return this.http.post(`${environment.api}/api/test/player/stand`, { token: this.token })
   }
 
 }

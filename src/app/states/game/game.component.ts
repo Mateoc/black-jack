@@ -24,6 +24,8 @@ export class GameComponent implements OnInit {
     DEALER_TURN: 'Dealer\'s turn'
   };
 
+  myCards = [];
+
   constructor(private gameStateService: GameStateService, private playerService: PlayerService) {
   }
 
@@ -35,15 +37,26 @@ export class GameComponent implements OnInit {
   }
 
   bet() {
-
+    console.log("apostando");
+    this.playerService.doBet().subscribe((gameState) => {
+      this.myCards = gameState.dealerCards.openCards;
+      console.log(gameState);
+    });
   }
 
   hit() {
-
+    console.log("haciendo hit");
+    this.playerService.doHit().subscribe((gameState) => {
+      this.myCards = gameState.dealerCards.openCards;
+      console.log(gameState);
+    });
   }
 
   stand() {
-
+    console.log("standing");
+    this.playerService.doStand().subscribe((gameState) => {
+      console.log(gameState);
+    });
   }
 
 }
