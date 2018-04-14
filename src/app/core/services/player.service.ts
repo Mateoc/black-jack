@@ -25,12 +25,29 @@ export class PlayerService {
   }
 
   bet(token: string, bet: number) {
-    console.log(this.http.post(`${environment.api}/api/player/bet`, {
-      token: token,
-      bet: bet
+    this.http.post(`${environment.api}/api/player/bet`, {
+      'token': token,
+      'bet': {
+        value : bet
+      }
+    }).subscribe((item)=>{      
+    });
+  }
+
+  stand(token: string) {
+    this.http.post(`${environment.api}/api/player/stand`, {
+      token: token      
     }).subscribe((item)=>{
       console.log(item);
-    })
+    });
+  }
+
+  hit(token: string) {
+    this.http.post(`${environment.api}/api/player/hit`, {
+      token: token      
+    }).subscribe((item)=>{
+      console.log(item);
+    });
   }
 
 }

@@ -47,20 +47,20 @@ export class GameComponent implements OnInit {
     if (betValue == 0) {
       betValue = 100;
     }
-
     console.log(betValue);
     let token:string = this.sessionService.getSessionToken();
 
     this.playerService.bet(token, betValue);
-
   }
 
   hit() {
-
+    let token:string = this.sessionService.getSessionToken();
+    this.playerService.hit(token);
   }
 
   stand() {
-
+    let token:string = this.sessionService.getSessionToken();
+    this.playerService.stand(token);
   }
 
 }
