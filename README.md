@@ -4,7 +4,7 @@
 
 Para iniciar el servidor de desarrollo corra `ng serve`. La aplicacion sera accesible en `http://localhost:4200/`. Cuando alguno de los archivos cambie la aplicacion se recargara automaticamente.
 
-##Reto
+## Reto
 
 El reto consiste en implementar tres acciones:
 
