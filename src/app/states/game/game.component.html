@@ -1,18 +1,29 @@
-<section class="game-component">
+<section class="game-component" id="rootContent">
   <app-logo></app-logo>
-  <div class="content">
+  <div class="content" id="content">
     <header>
       <h1>Let's Play!</h1>
     </header>
 
     <div *ngIf="playerObservable | async as player">
-      <div *ngIf="gameStateObservable | async as state">State: {{state}}</div>
-      {{player | json}}
+      <div *ngIf="gameStateObservable | async as state">State: {{state}}
+      
+      </div>
+      <div class="info_persona" id="info_persona">
+
+          <h1>State:{{player.state}}</h1>
+          <h1>Turn is your turn</h1>
+          <h1>Name: {{player.name}}</h1>
+          <h1>Email: {{player.email}}</h1>
+          <h1>Balance: {{player.balance}}</h1>
+          <h1>Bet: {{player.bet}}</h1>
+      </div>
+    
       <div *ngIf="player.cards as cards">
         <img *ngFor="let card of cards" [src]="card" alt="">
       </div>
       <div class="actions">
-        <button type="button">Bet!</button>
+        <button  ng-click="bet()" type="button">Bet!</button>
         <button type="button">Hit</button>
         <button type="button">Stand</button>
       </div>
