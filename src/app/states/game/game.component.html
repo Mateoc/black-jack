@@ -1,21 +1,49 @@
 <section class="game-component">
   <app-logo></app-logo>
   <div class="content">
-    <header>
-      <h1>Let's Play!</h1>
-    </header>
 
-    <div *ngIf="playerObservable | async as player">
-      <div *ngIf="gameStateObservable | async as state">State: {{state}}</div>
-      {{player | json}}
-      <div *ngIf="player.cards as cards">
+    <ng-container *ngIf="playerObservable | async as player">
+      <div class="row" *ngIf="gameStateObservable | async as state" style="margin-top: 50px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+          <table class="table" *ngIf="player && state">
+            <tbody>
+              <tr>
+                <td>MyInfo</td>
+                <td>Name: {{player.name}} Balance: {{player.balance}}</td>
+              </tr>
+              <tr>
+                <td>State: </td>
+                <td>{{state}}</td>
+              </tr>
+              <tr>
+                <td>players: </td>
+                <td>
+                  <ul>
+                    <li *ngFor="let player of betInfo$?.players">
+                      Name: {{player.name}} Balance: {{player.balance}} State:{{player.state}}
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="row" *ngIf="player.cards as cards">
         <img *ngFor="let card of cards" [src]="card" alt="">
       </div>
-      <div class="actions">
-        <button type="button">Bet!</button>
-        <button type="button">Hit</button>
-        <button type="button">Stand</button>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <button class="btn btn-primary" type="button" (click)="bet()">Bet!</button>
+          <button class="btn btn-primary" type="button" (click)="hit()">Hit</button>
+          <button class="btn btn-primary" type="button" (click)="stand()">Stand</button>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 </section>
+<!--{ "_name": "Luis Felipe Mejia", "_email": "luisfe_617@outlook.com", "_balance": 10000, "_cards": [] }-->

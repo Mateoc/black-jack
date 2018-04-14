@@ -22,7 +22,7 @@ export class GameStateService {
     console.log('loading');
     this.eventObserver = new BehaviorSubject([]);
 
-    const eventSource = new window['EventSource'](`${environment.api}/public/player/updates?token=${sessionService.getSessionToken()}`);
+    const eventSource = new window['EventSource'](`${environment.apiRoot}/public/player/updates?token=${sessionService.getSessionToken()}`);
     eventSource.addEventListener('gameState', (e) => {
       console.log('gameState', e);
       const game = JSON.parse(e.data);

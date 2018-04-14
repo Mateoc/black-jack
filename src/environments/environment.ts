@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  api: 'https://hackathon.test4echo.co'
+  apiRoot: 'https://hackathon.test4echo.co',
+  api: '/test'
 };
