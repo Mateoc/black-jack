@@ -5,6 +5,8 @@
       <h1>Let's Play!</h1>
     </header>
 
+    <input placeholder="Bet" name="bet" [(ngModel)]="betInput">
+
     <div *ngIf="playerObservable | async as player">
       <div *ngIf="gameStateObservable | async as state">State: {{state}}</div>
       {{player | json}}
@@ -12,9 +14,9 @@
         <img *ngFor="let card of cards" [src]="card" alt="">
       </div>
       <div class="actions">
-        <button type="button">Bet!</button>
-        <button type="button">Hit</button>
-        <button type="button">Stand</button>
+        <button type="button" (click)="bet()">Bet!</button>
+        <button type="button" (click)="hit()">Hit</button>
+        <button type="button" (click)="stand()">Stand</button>
       </div>
     </div>
   </div>
