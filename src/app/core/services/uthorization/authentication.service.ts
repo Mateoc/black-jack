@@ -11,7 +11,6 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private sessionService: SessionService) { }
 
-
   login (credentials: Credentials) {
     return this.http.post(`${environment.api}/api/player/register`, credentials).map((result: any) => {
       this.sessionService.setSession(result.token, credentials);

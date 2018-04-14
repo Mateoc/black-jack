@@ -24,4 +24,30 @@ export class PlayerService {
     return this.http.get(`${environment.api}/api/player/`);
   }
 
+  setBet(): Observable<any>{
+    return this.http.post(`${environment.api}/api/test/player/bet`, 
+      {
+        token: this.sessionService.getSessionToken(),
+        bet:{
+          "value": 100
+        }
+      }
+    );
+  }
+
+  setHit(): Observable<any>{
+    return this.http.post(`${environment.api}/api/test/player/hit`, 
+      {
+        token: this.sessionService.getSessionToken()
+      }
+    );
+  }
+
+  setStand(): Observable<any>{
+    return this.http.post(`${environment.api}/api/test/player/stand`, 
+      {
+        token: this.sessionService.getSessionToken()
+      }
+    );
+  }
 }

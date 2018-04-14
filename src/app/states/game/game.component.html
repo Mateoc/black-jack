@@ -6,15 +6,32 @@
     </header>
 
     <div *ngIf="playerObservable | async as player">
-      <div *ngIf="gameStateObservable | async as state">State: {{state}}</div>
-      {{player | json}}
-      <div *ngIf="player.cards as cards">
-        <img *ngFor="let card of cards" [src]="card" alt="">
-      </div>
-      <div class="actions">
-        <button type="button">Bet!</button>
-        <button type="button">Hit</button>
-        <button type="button">Stand</button>
+      <div *ngIf="gameStateObservable | async as state">
+        State: {{state}}
+        <table width="50%" border="1">
+          <tr>
+            <td>Name:</td>
+            <td>{{player._name}}</td>
+          </tr>
+          <tr>
+            <td>Balance:</td>
+            <td>{{player._balance}}</td>
+          </tr>
+          <tr>
+            <td>Turn:</td>
+            <td>{{player._turn == true ? 'Your Turn' : 'Turn in progress'}}</td>
+          </tr>
+        </table>
+
+        <div *ngIf="player.cards as cards">
+          <img *ngFor="let card of cards" [src]="card" alt="">
+        </div>
+
+        <div class="actions">
+          <button type="button" (click)="bet(state, player)">Bet!</button>
+          <button type="button" (click)="hit(state, player)">Hit</button>
+          <button type="button" (click)="stand(state, player)">Stand</button>
+        </div>
       </div>
     </div>
   </div>

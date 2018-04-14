@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {GameStateService} from '../../core/services/game-state.service';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { GameStateService } from '../../core/services/game-state.service';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
-import {PlayerService} from '../../core/services/player.service';
+import { PlayerService } from '../../core/services/player.service';
 import Player from '../../core/model/player';
 
 @Component({
@@ -34,16 +34,38 @@ export class GameComponent implements OnInit {
     });
   }
 
-  bet() {
+  bet(state, player) {
+    console.log("States: " + state);
+    if (player._balance < 100) {
+      alert('You cannot set a bet, your balance amount is under 100');
+      return;
+    }
 
+    if (state != this.codes.CREATED) {
+      alert('No more bets');
+      return;
+    }
+
+    this.playerService.setBet().subscribe(test => {
+      console.log(test);
+    });
   }
 
-  hit() {
+  hit(state) {
+    console.log("States: " + state);
 
+    this.playerService.setHit().subscribe(test => {
+      console.log(test);
+    });
   }
 
-  stand() {
+  stand(state) {
+    console.log("States: " + state);
 
+    this.playerService.setStand().subscribe(test => {
+      console.log(test);
+    });
   }
 
+  private
 }
