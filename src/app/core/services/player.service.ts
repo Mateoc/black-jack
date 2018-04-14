@@ -28,15 +28,15 @@ export class PlayerService {
 
   doBet(): Observable<any>{
     let params = {token: this.token, bet: { value: 0 }};
-    return this.http.post(`${environment.api}/api/test/player/bet`, params)
+    return this.http.post(`${environment.api}/api/player/bet`, params)
   }
 
   doHit(): Observable<any>{
-    return this.http.post(`${environment.api}/api/test/player/hit`, { token: this.token })
+    return this.http.post(`${environment.api}/api/player/hit`, { token: this.token })
   }
 
   doStand(): Observable<any>{
-    return this.http.post(`${environment.api}/api/test/player/stand`, { token: this.token })
+    return this.http.post(`${environment.api}/api/player/stand`, { token: this.token })
   }
 
 }
