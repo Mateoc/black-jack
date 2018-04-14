@@ -2,12 +2,13 @@
   <app-logo></app-logo>
   <div class="content">
     <header>
-      <h1>Login</h1>
+
     </header>
-    <form (ngSubmit)="login()">
-      <input placeholder="Name" name="name" [(ngModel)]="credentials.name">
-      <input type="email" placeholder="E-mail" name="email" [(ngModel)]="credentials.email">
-      <div class="button-wrap"><button>Enter</button></div>
+    <form (ngSubmit)="login()" class="form">
+      <h1>Login</h1>
+      <input placeholder="Name"  name="name" [(ngModel)]="credentials.name" class="form--input">
+      <input type="email" placeholder="E-mail" name="email" [(ngModel)]="credentials.email" class="form--input">
+      <div ><button class="form--button">Enter</button></div>
     </form>
   </div>
 </section>
