@@ -24,14 +24,16 @@
           <tr>
             <td>Players:</td>
             <td>
+              <span *ngIf="players_t.length == 0">No Players</span>
               <table width="100%">
-                <tr *ngFor="let players of player_t">
+                <tr *ngFor="let player_t of players_t">
+
                   <td>
                     Name: {{player_t.name}}
                   </td>
                   <td>
-                      State: {{player_t.state}}
-                    </td>
+                    State: {{player_t.state}}
+                  </td>
                 </tr>
               </table>
             </td>

@@ -16,7 +16,7 @@ export class GameComponent implements OnInit {
 
   playerObservable: Observable<Player>;
   gameStateObservable: Observable<string>;
-  players: Array<any>;
+  players_t: Array<any> = new Array();
 
   private codes = {
     CREATED: 'Waiting for bets',
@@ -49,7 +49,8 @@ export class GameComponent implements OnInit {
 
     this.playerService.setBet().subscribe(test => {
       console.log(test);
-      this.players = test.players;
+      console.log(test.players);
+      this.players_t = test.players;
     });
   }
 
@@ -58,7 +59,7 @@ export class GameComponent implements OnInit {
 
     this.playerService.setHit().subscribe(test => {
       console.log(test);
-      this.players = test.players;
+      this.players_t = test.players;
     });
   }
 
@@ -67,7 +68,7 @@ export class GameComponent implements OnInit {
 
     this.playerService.setStand().subscribe(test => {
       console.log(test);
-      this.players = test.players;
+      this.players_t = test.players;
     });
   }
 
