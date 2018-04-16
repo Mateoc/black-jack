@@ -1,16 +1,16 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
-import {Observable} from 'rxjs/Observable';
-import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import {environment} from '../../../environments/environment';
-import {SessionService} from './uthorization/session.service';
-import {Credentials} from '../model/credentials';
+import { environment } from '../../../environments/environment';
+import { SessionService } from './uthorization/session.service';
+import { Credentials } from '../model/credentials';
 import Player from '../model/player';
-import {PlayerService} from './player.service';
+import { PlayerService } from './player.service';
 
 
 @Injectable()
@@ -26,17 +26,17 @@ export class GameStateService {
     eventSource.addEventListener('gameState', (e) => {
       console.log('gameState', e);
       const game = JSON.parse(e.data);
-      if (this.getPlayerDto(this.sessionService.getCredentials().email, game.players)){
+      if (this.getPlayerDto(this.sessionService.getCredentials().email, game.players)) {
         this.eventObserver.next(game);
       } else {
         this.playerService.getPlayerState().subscribe((playerGame) => {
           if (playerGame.players) {
             this.eventObserver.next(playerGame);
-            return {playerGame};
+            return { playerGame };
           } else {
             return playerService.getPlayer().subscribe(player => {
-              this.eventObserver.next({...playerGame, players: [player]});
-              return {...playerGame, players: [player]};
+              this.eventObserver.next({ ...playerGame, players: [player] });
+              return { ...playerGame, players: [player] };
             });
           }
         });
@@ -46,11 +46,11 @@ export class GameStateService {
     this.playerService.getPlayerState().subscribe((playerGame) => {
       if (playerGame.players) {
         this.eventObserver.next(playerGame);
-        return {playerGame};
+        return { playerGame };
       } else {
         return playerService.getPlayer().subscribe(player => {
-          this.eventObserver.next({...playerGame, players: [player]});
-          return {...playerGame, players: [player]};
+          this.eventObserver.next({ ...playerGame, players: [player] });
+          return { ...playerGame, players: [player] };
         });
       }
     });
@@ -95,4 +95,7 @@ export class GameStateService {
       }
     }
   }
+
+  
+
 }
